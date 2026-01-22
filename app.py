@@ -122,6 +122,99 @@ st.markdown("""
         color: var(--secondary-color) !important;
         border-bottom: 3px solid var(--secondary-color);
     }
+
+    /* Tab Animation */
+    @keyframes slideUpFade {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .stTabs [data-baseweb="tab-panel"] {
+        animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* New Solution Card Styling */
+    .solution-card {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        border: 1px solid #edf2f7;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .solution-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--primary-gradient);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .solution-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: #bbeeef;
+    }
+    
+    .solution-card:hover::before {
+        opacity: 1;
+    }
+
+    .solution-icon {
+        font-size: 2.5rem;
+        background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        flex-shrink: 0;
+        border: 1px solid #e0f7fa;
+    }
+
+    .solution-content {
+        flex-grow: 1;
+    }
+
+    .solution-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #1a202c;
+        margin-bottom: 0.5rem;
+        font-family: 'Exo 2', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .solution-category {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: #ebf8ff;
+        color: #2b6cb0;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        font-weight: 700;
+        border: 1px solid #bee3f8;
+    }
+
+    .solution-summary {
+        color: #4a5568;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
     
     /* Global Text Fix */
     .stMarkdown, .stText, p, li {
@@ -505,7 +598,7 @@ def render_poc(solution_id, solution_title):
 
 # Setup Sidebar
 with st.sidebar:
-    st.title("🏥 Smart Hospital AI")
+    st.title("🏥UMC - Smart Hospital")
     st.markdown("---")
     
     st.write("Dùng bộ lọc bên dưới để tìm giải pháp phù hợp:")
@@ -538,8 +631,8 @@ filtered_solutions = [s for s in solutions if s['category'] in selected_categori
 st.markdown('<a id="hero"></a>', unsafe_allow_html=True)
 st.markdown("""
     <div class="hero-container">
-        <div class="hero-title">Sáng kiến Bệnh viện Thông minh</div>
-        <div class="hero-subtitle">10 Giải pháp AI đột phá chuyển đổi số Y tế</div>
+        <div class="hero-title">Bệnh viện Thông minh</div>
+        <div class="hero-subtitle">Giải pháp AI đột phá chuyển đổi số Y tế</div>
         <div style="margin-top: 20px; font-size: 1rem;">
              Khám phá các ứng dụng Trí tuệ nhân tạo giúp nâng cao chất lượng điều trị và tối ưu vận hành
         </div>
@@ -557,16 +650,19 @@ if not filtered_solutions:
 for idx, sol in enumerate(filtered_solutions):
     # Create a container for each solution
     with st.container():
-        # Header for the solution
-        col_icon, col_content = st.columns([1, 15])
-        
-        with col_icon:
-            st.markdown(f"<div style='font-size: 3rem; text-align: center;'>{sol.get('icon_char', sol['icon'])}</div>", unsafe_allow_html=True)
-            
-        with col_content:
-            st.markdown(f"### {sol['title']}")
-            st.caption(f"**Lĩnh vực:** {sol['category'].upper()}")
-            st.markdown(f"_{sol['summary']}_")
+        # Custom Card Layout for Header
+        st.markdown(f"""
+        <div class="solution-card">
+            <div class="solution-icon">{sol.get('icon_char', sol['icon'])}</div>
+            <div class="solution-content">
+                <div class="solution-title">
+                    {sol['title']}
+                    <span class="solution-category">{sol['category']}</span>
+                </div>
+                <div class="solution-summary">{sol['summary']}</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
         # Detailed Tabs inline
         st.markdown("")
@@ -600,6 +696,6 @@ st.markdown("""
             <p style="color: #0083B0; font-weight: bold;">Hotline: 1900 2827</p>
         </div>
         <hr style="border-color: #f0f0f0; margin: 20px 0;">
-        <p style="font-size: 0.8rem; opacity: 0.7; color: #90a4ae;">© 2024 AI Solutions. Powered by Streamlit.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7; color: #90a4ae;">© 2026 AI Solutions. Powered by Streamlit.</p>
     </div>
 """, unsafe_allow_html=True)
