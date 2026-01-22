@@ -2,7 +2,7 @@
 name = "smart-hospital-ai"
 version = "0.1.0"
 description = "Portfolio of AI solutions for Smart Hospital"
-readme = "README.md"
+readme = "readme.md"
 requires-python = ">=3.9"
 dependencies = [
     "streamlit",
