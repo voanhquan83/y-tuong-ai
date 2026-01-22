@@ -349,34 +349,6 @@ solutions = [
     },
     {
         "id": 8,
-        "title": "Trợ lý phân tích toa thuốc",
-        "category": "Lâm sàng",
-        "icon": "💊",
-        "summary": "Kiểm tra tương tác thuốc và chống chỉ định dựa trên Knowledge Graphs.",
-        "necessity": """
-        **Tại sao cần giải pháp này?**
-        - **An toàn người bệnh:** Tương tác thuốc (Drug-Drug Interaction) là nguyên nhân gây ra nhiều sự cố y khoa nghiêm trọng.
-        - **Phức tạp:** Với bệnh nhân đa bệnh lý dùng nhiều thuốc, bác sĩ khó nhớ hết hàng nghìn cặp tương tác.
-        """,
-        "implementation": """
-        **Cách thức hoạt động của AI:**
-        - **Công nghệ:** Graph Database (Neo4j) & Medical Knowledge Graph.
-        - **Mô hình:** Xây dựng đồ thị tri thức liên kết Thuốc - Thành phần - Bệnh lý - Chống chỉ định.
-        - **Quy trình:**
-            1. Bác sĩ kê đơn trên EMR.
-            2. Hệ thống AI quét toàn bộ danh mục thuốc kê + thuốc cũ + tiền sử dị ứng.
-            3. Truy vấn đồ thị để tìm xung đột (Cặp thuốc kỵ nhau, thuốc kỵ bệnh).
-            4. Cảnh báo tức thì nếu có mức độ nghiêm trọng cao.
-        """,
-        "results": """
-        **Kết quả & Lợi ích (ROI):**
-        - **Zero Error:** Hướng tới loại bỏ 100% lỗi kê đơn do tương tác thuốc đã biết.
-        - **Đào tạo:** Nâng cao kiến thức dược lý cho bác sĩ trẻ thông qua các cảnh báo giải thích chi tiết.
-        - **Tuân thủ:** Đảm bảo tuân thủ hướng dẫn điều trị và dược thư quốc gia.
-        """
-    },
-    {
-        "id": 9,
         "title": "Tra cứu hồ sơ bệnh án (RAG Assistant)",
         "category": "Vận hành",
         "icon": "🔍",
@@ -402,7 +374,7 @@ solutions = [
         """
     },
     {
-        "id": 10,
+        "id": 9,
         "title": "Phân tích lượng máu mất trong phẫu thuật",
         "category": "Lâm sàng",
         "icon": "🩸",
