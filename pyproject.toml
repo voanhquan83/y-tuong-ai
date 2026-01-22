@@ -1,0 +1,15 @@
+[project]
+name = "smart-hospital-ai"
+version = "0.1.0"
+description = "Portfolio of AI solutions for Smart Hospital"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "streamlit",
+    "pandas",
+    "numpy",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
