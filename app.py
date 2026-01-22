@@ -159,7 +159,7 @@ solutions = [
             - Sử dụng **ARIMA (AutoRegressive Integrated Moving Average)** cho các chuỗi dữ liệu có tính quy luật rõ ràng.
             - Ứng dụng **LSTM (Long Short-Term Memory)** - một mạng nơ-ron hồi quy (RNN) để học các mẫu phức tạp và phi tuyến tính từ chuỗi thời gian dài.
         - **Quy trình:**
-            1. Hệ thống tự động thu thập dữ liệu tồn kho hàng ngày.
+            1. Xây dựng Data Warehouse, Snowflake và Airflow để tự động thu thập dữ liệu tồn kho.
             2. AI phân tích xu hướng và đưa ra dự báo nhu cầu cho 1-3 tháng tới.
             3. Hệ thống cảnh báo tự động khi lượng tồn kho chạm ngưỡng an toàn (Reorder Point) hoặc khi có thuốc sắp hết hạn (FEFO - First Expired First Out).
         """,
