@@ -568,25 +568,14 @@ def render_poc(solution_id, solution_title):
         st.metric("Bước chân hôm nay", "2,341", "-500 so với mục tiêu")
         st.warning("🔔 Nhắc nhở: Bạn chưa đạt mục tiêu vận động. Hãy đi bộ nhẹ 15 phút sau bữa tối nhé!")
 
-    elif solution_id == 8: # Drug Interaction
-        d1 = st.selectbox("Thuốc 1", ["Aspirin", "Paracetamol", "Insulin"], key="d1")
-        d2 = st.selectbox("Thuốc 2", ["Warfarin", "Ibuprofen", "Vitamin C"], key="d2")
-        
-        if d1 == "Aspirin" and d2 == "Warfarin":
-            st.error("⛔ TƯƠNG TÁC NGHIÊM TRỌNG: Nguy cơ chảy máu cao!")
-        elif d1 == "Aspirin" and d2 == "Ibuprofen":
-            st.warning("⚠️ Tương tác trung bình: Giảm tác dụng bảo vệ tim mạch.")
-        else:
-            st.success("✅ Không tìm thấy tương tác đáng kể.")
-
-    elif solution_id == 9: # RAG Search
+    elif solution_id == 8: # RAG Search
         q = st.text_input("Tra cứu hồ sơ:", "Bệnh nhân có tiền sử dị ứng Penicillin không?")
         if q:
             with st.spinner("Đang đọc hồ sơ (200 trang)..."):
                 st.write("**🤖 Kết quả:** Có. Ghi nhận dị ứng Penicillin năm 2018 (Biểu hiện: Nổi mề đay).")
                 st.caption("Nguồn: Phiếu khám ngày 12/05/2018 - BS. Nguyễn Văn A.")
 
-    elif solution_id == 10: # Blood Loss
+    elif solution_id == 9: # Blood Loss
         st.write("📷 Phân tích hình ảnh gạc phẫu thuật:")
         c1, c2 = st.columns(2)
         c1.markdown('<div style="width:100px; height:100px; background-color: #8b0000; border-radius: 5px;"></div> (Ảnh Gạc)', unsafe_allow_html=True)
